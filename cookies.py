@@ -240,8 +240,7 @@ class Definitions(object):
     # in the variable portion of the Set-Cookie header (like the unnamed latter
     # part of set-cookie-string in the grammar). Each regexp of any complexity
     # is split out for testing by itself.
-    ATTR = """(?ix)  # Case-insensitive mode, verbose mode
-        # Always start with start or semicolon and any number of spaces
+    ATTR = """# Always start with start or semicolon and any number of spaces
         (?:^|;)[ ]*(?:
             # Big disjunction of attribute patterns (*_AV), with named capture
             # groups to extract everything in one pass. Anything unrecognized
@@ -259,6 +258,7 @@ class Definitions(object):
         # End with any number of spaces not matched by the preceding (up to the
         # next semicolon) - but do not capture these.
         [ ]*
+        (?ix)  # Case-insensitive mode, verbose mode
     """.format(expires=EXPIRES_AV, max_age=MAX_AGE_AV, domain=DOMAIN_AV,
                path=PATH_AV, stuff=EXTENSION_AV)
 
