@@ -203,8 +203,7 @@ class Definitions(object):
     # Here is the overall date format; ~99% of cases fold into one generalized
     # syntax like RFC 1123, and many of the rest use asctime-like formats.
     # (see test_date_formats for a full exegesis)
-    DATE = """(?ix) # Case-insensitive mode, verbose mode
-        (?:
+    DATE = """(?:
             (?P<weekday>(?:{wdy}|{weekday}),[ ])?
             (?P<day>{day})
             [ \-]
@@ -230,6 +229,7 @@ class Definitions(object):
             (?P<year2>\d\d\d\d)
             (?:[ ]GMT)?  # GMT (Amazon)
         )
+        (?ix) # Case-insensitive mode, verbose mode
     """
     DATE = DATE.format(wdy=WEEKDAY_SHORT, weekday=WEEKDAY_LONG,
                        day=DAY_OF_MONTH, mon=MONTH_SHORT, month=MONTH_LONG)
